@@ -77,4 +77,10 @@ TEST(PictureTest, Iterator)
     ASSERT_FALSE(iter1 != iter2);
 }
 
+TEST(PictureTest, GetTimeline)
+{
+    Picture picture;
 
+    Timeline *timeline = picture.GetTimeline();
+    ASSERT_NE(nullptr, timeline);
+}

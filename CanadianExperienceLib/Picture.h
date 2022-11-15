@@ -9,6 +9,8 @@
 #ifndef CANADIANEXPERIENCE_PICTURE_H
 #define CANADIANEXPERIENCE_PICTURE_H
 
+#include "Timeline.h"
+
 class PictureObserver;
 class Actor;
 
@@ -27,6 +29,9 @@ private:
 
     /// Container of the actors in our image
     std::vector<std::shared_ptr<Actor>> mActors;
+
+    /// The animation timeline
+    Timeline mTimeline;
 
 public:
 
@@ -107,9 +112,13 @@ public:
     };
 
     ActorIter begin();
-
-
     ActorIter end();
+
+    /**
+     * Get a pointer to the Timeline object
+     * @return Pointer to the Timeline object
+     */
+    Timeline *GetTimeline() {return &mTimeline;}
 
 };
 
