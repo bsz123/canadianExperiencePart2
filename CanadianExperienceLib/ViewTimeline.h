@@ -20,10 +20,16 @@ private:
     void OnMouseMove(wxMouseEvent& event);
     void OnPaint(wxPaintEvent& event);
 
+    /// Bitmap image for the pointer
+    std::unique_ptr<wxImage> mPointerImage;
+
+    /// Graphics bitmap to display
+    wxGraphicsBitmap mPointerBitmap;
+
 public:
     static const int Height = 90;      ///< Height to make this window
 
-    ViewTimeline(wxFrame* parent);
+    ViewTimeline(wxFrame* parent, std::wstring img);
 
     void UpdateObserver() override;
 

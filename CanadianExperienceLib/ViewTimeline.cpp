@@ -44,13 +44,15 @@ const std::wstring PointerImageFile = L"/pointer.png";
  * Constructor
  * @param parent The main wxFrame object
  */
-ViewTimeline::ViewTimeline(wxFrame* parent) :
+ViewTimeline::ViewTimeline(wxFrame* parent, std::wstring img) :
     wxScrolledCanvas(parent,
             wxID_ANY,
             wxDefaultPosition,
             wxSize(100, Height),
             wxBORDER_SIMPLE)
 {
+
+
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
     Bind(wxEVT_PAINT, &ViewTimeline::OnPaint, this);
@@ -61,6 +63,8 @@ ViewTimeline::ViewTimeline(wxFrame* parent) :
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED,
             &ViewTimeline::OnEditTimelineProperties, this,
             XRCID("EditTimelineProperties"));
+    mPointerImage = make_unique<wxImage>(img + PointerImageFile, wxBITMAP_TYPE_ANY);
+
 }
 
 
@@ -96,11 +100,7 @@ void ViewTimeline::OnPaint(wxPaintEvent& event)
             wxFONTWEIGHT_NORMAL);
     graphics->SetFont(font, *wxBLACK);
 
-
-
-
     double leftPad = BorderLeft;
-
     bool onSecond;
 
     for (int tick = 0; tick <= tickNum; tick++)
@@ -125,6 +125,17 @@ void ViewTimeline::OnPaint(wxPaintEvent& event)
         }
         leftPad += TickSpacing;
     }
+    if (mPointerBitmap.IsNull())
+    {
+        mPointerBitmap = graphics->CreateBitmapFromImage(*mPointerImage);
+    }
+
+    graphics->DrawBitmap(mPointerBitmap,
+            10, 10,
+            mPointerImage->GetWidth(),
+            mPointerImage->GetHeight());
+
+
 }
 
 /**

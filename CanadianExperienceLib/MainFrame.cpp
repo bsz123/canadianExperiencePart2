@@ -50,7 +50,7 @@ void MainFrame::Initialize()
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT);
 
     mViewEdit = new ViewEdit(this);
-    mViewTimeline = new ViewTimeline(this);
+    mViewTimeline = new ViewTimeline(this, imagesDir);
 
     auto sizer = new wxBoxSizer( wxVERTICAL );
 
