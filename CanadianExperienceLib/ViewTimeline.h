@@ -13,7 +13,7 @@
 /**
  * View class for the timeline area of the screen.
  */
-class ViewTimeline final : public wxWindow, public PictureObserver {
+class ViewTimeline final : public wxScrolledCanvas, public PictureObserver {
 private:
     void OnLeftDown(wxMouseEvent &event);
     void OnLeftUp(wxMouseEvent& event);

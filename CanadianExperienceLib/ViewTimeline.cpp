@@ -14,6 +14,8 @@
 #include "TimelineDlg.h"
 #include "Picture.h"
 
+using namespace std;
+
 /// Y location for the top of a tick mark
 const int TickTop = 15;
 
@@ -43,7 +45,7 @@ const std::wstring PointerImageFile = L"/pointer.png";
  * @param parent The main wxFrame object
  */
 ViewTimeline::ViewTimeline(wxFrame* parent) :
-    wxWindow(parent,
+    wxScrolledCanvas(parent,
             wxID_ANY,
             wxDefaultPosition,
             wxSize(100, Height),
@@ -76,6 +78,7 @@ void ViewTimeline::OnPaint(wxPaintEvent& event)
     SetScrollRate(1, 0);
 
     wxAutoBufferedPaintDC dc(this);
+    DoPrepareDC(dc);
 
     wxBrush background(*wxWHITE);
     dc.SetBackground(background);
