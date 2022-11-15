@@ -68,8 +68,8 @@ void HeadTop::Draw(std::shared_ptr<wxGraphicsContext> graphics)
     float wid = 15.0f;
     float hit = 20.0f;
 
-    wxPoint e1 = TransformPoint(wxPoint(40, mEyeHit));
-    wxPoint e2 = TransformPoint(wxPoint(70, mEyeHit));
+    wxPoint e1 = TransformPoint(wxPoint(mEyeLeft, mEyeHit));
+    wxPoint e2 = TransformPoint(wxPoint(mEyeRight, mEyeHit));
 
     graphics->PushState();
     graphics->SetBrush(*wxBLACK);
@@ -120,13 +120,16 @@ void HeadTop::Eyebrow(std::shared_ptr<wxGraphicsContext> graphics, bool left)
     if (left)
     {
         browWid *= -1;
-        p =  TransformPoint(wxPoint(46, mEyebrowHit));
+        p =  TransformPoint(wxPoint(mEyeLeft+6, mEyebrowHit));
     }
-    else{ p = TransformPoint(wxPoint(63, mEyebrowHit));}
+    else{ p = TransformPoint(wxPoint(mEyeRight-6, mEyebrowHit));}
 
     graphics->Translate(p.x, p.y);
 
-    graphics->SetPen(*wxBLACK_PEN);
+    wxPen eyebrow;
+    eyebrow.SetColour(*wxBLACK);
+    eyebrow.SetWidth(2);
+    graphics->SetPen(eyebrow);
     graphics->Rotate(-mPlacedR);
     graphics->StrokeLine(0, 0, browWid, browHit);
 
@@ -188,7 +191,22 @@ void HeadTop::SetEyeHit(float hit)
     mEyebrowHit = mEyeHit-19;
 }
 
+/**
+ * Distance between eyes setter
+ * @param dis distance
+ */
 void HeadTop::SetInterocularDistance(float dis)
 {
     mInterocularDistance = dis;
+}
+
+/**
+ * Set the x vals for image
+ * @param left eye x L
+ * @param right eye x R
+ */
+void HeadTop::SetEyeX(float left, float right)
+{
+    mEyeLeft = left;
+    mEyeRight = right;
 }

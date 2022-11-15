@@ -51,6 +51,7 @@ std::shared_ptr<Actor> CanadianFactory::Create(std::wstring imagesDir)
     auto headt = make_shared<HeadTop>(L"Head Top", imagesDir + L"/headt3.png");
     headt->SetCenter(wxPoint(55, 109));
     headt->SetPosition(wxPoint(5, -16));
+    headt->SetEyeX(34, 64);
     headb->AddChild(headt);
 
     auto larm = make_shared<PolyDrawable>(L"Left Arm");

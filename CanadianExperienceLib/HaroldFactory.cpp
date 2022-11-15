@@ -51,6 +51,7 @@ std::shared_ptr<Actor> HaroldFactory::Create(std::wstring imagesDir)
     auto headt = make_shared<HeadTop>(L"Head Top", imagesDir + L"/harold_headt_blank.png");
     headt->SetCenter(wxPoint(55, 109));
     headt->SetPosition(wxPoint(0, -31));
+    headt->SetEyeX(40, 70);
     headb->AddChild(headt);
 
     auto larm = make_shared<PolyDrawable>(L"Left Arm");

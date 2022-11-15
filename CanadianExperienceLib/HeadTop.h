@@ -26,7 +26,9 @@ private:
     RotatedBitmap mRightEye;       ///< Bitmap for the right eye
 
     wxPoint mEyesCenter; ///< Center of eyes
-    float mInterocularDistance;
+    float mInterocularDistance; ///< Distance between eyes
+    float mEyeLeft; ///< Left ellipse
+    float mEyeRight; ///< Right ellipse
 
 public:
     
@@ -74,6 +76,8 @@ public:
     void DrawEye(std::shared_ptr<wxGraphicsContext> graphics, wxPoint p1);
 
     void SetInterocularDistance(float dis);
+
+    void SetEyeX(float left, float right);
 };
 
 #endif //CANADIANEXPERIENCE_HEADTOP_H
