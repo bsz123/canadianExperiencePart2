@@ -26,6 +26,8 @@ public:
     ViewTimeline(wxFrame* parent);
 
     void UpdateObserver() override;
+
+    void OnEditTimelineProperties(wxCommandEvent& event);
 };
 
 

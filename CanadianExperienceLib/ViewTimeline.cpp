@@ -9,9 +9,8 @@
 #include <wx/xrc/xmlres.h>
 
 #include "ViewTimeline.h"
-
-
-
+#include "TimelineDlg.h"
+#include "Picture.h"
 
 /**
  * Constructor
@@ -30,6 +29,10 @@ ViewTimeline::ViewTimeline(wxFrame* parent) :
     Bind(wxEVT_LEFT_DOWN, &ViewTimeline::OnLeftDown, this);
     Bind(wxEVT_LEFT_UP, &ViewTimeline::OnLeftUp, this);
     Bind(wxEVT_MOTION, &ViewTimeline::OnMouseMove, this);
+
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED,
+            &ViewTimeline::OnEditTimelineProperties, this,
+            XRCID("EditTimelineProperties"));
 }
 
 
@@ -100,3 +103,16 @@ void ViewTimeline::UpdateObserver()
     Refresh();
 }
 
+/**
+ * Handle an Edit>Timeline Properties... menu option
+ * @param event The menu event
+ */
+void ViewTimeline::OnEditTimelineProperties(wxCommandEvent& event)
+{
+    TimelineDlg dlg(this->GetParent(), GetPicture()->GetTimeline());
+    if(dlg.ShowModal() == wxID_OK)
+    {
+        // The dialog box has changed the Timeline settings
+        GetPicture()->UpdateObservers();
+    }
+}
