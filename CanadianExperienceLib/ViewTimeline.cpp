@@ -1,16 +1,42 @@
 /**
  * @file ViewTimeline.cpp
  * @author Charles B. Owen
+ * @author Ben Zuke
  */
 
 #include "pch.h"
 
 #include <wx/dcbuffer.h>
 #include <wx/xrc/xmlres.h>
+#include <sstream>
 
 #include "ViewTimeline.h"
 #include "TimelineDlg.h"
 #include "Picture.h"
+
+/// Y location for the top of a tick mark
+const int TickTop = 15;
+
+/// The spacing between ticks in the timeline
+const int TickSpacing = 4;
+
+/// The length of a short tick mark
+const int TickShort = 10;
+
+/// The length of a long tick mark
+const int TickLong = 20;
+
+/// Size of the tick mark labels
+const int TickFontSize = 15;
+
+/// Space to the left of the scale
+const int BorderLeft = 10;
+
+/// Space to the right of the scale
+const int BorderRight = 10;
+
+/// Filename for the pointer image
+const std::wstring PointerImageFile = L"/pointer.png";
 
 /**
  * Constructor
@@ -42,6 +68,13 @@ ViewTimeline::ViewTimeline(wxFrame* parent) :
  */
 void ViewTimeline::OnPaint(wxPaintEvent& event)
 {
+    Timeline* timeline = GetPicture()->GetTimeline();
+    double tickNum = timeline->GetNumFrames();
+
+    // Total Frames * tick spacing + left border + right boarder, member height
+    SetVirtualSize(tickNum * TickSpacing + BorderLeft + BorderRight, Height);
+    SetScrollRate(1, 0);
+
     wxAutoBufferedPaintDC dc(this);
 
     wxBrush background(*wxWHITE);
@@ -53,19 +86,42 @@ void ViewTimeline::OnPaint(wxPaintEvent& event)
 
     wxPen pen(wxColour(0, 128, 0), 1);
     graphics->SetPen(pen);
-    graphics->DrawRectangle(10, 10, 200, 60);
 
     wxFont font(wxSize(0, 16),
             wxFONTFAMILY_SWISS,
             wxFONTSTYLE_NORMAL,
             wxFONTWEIGHT_NORMAL);
     graphics->SetFont(font, *wxBLACK);
-    graphics->DrawText(L"Timeline!", 15, 15);
 
-    auto time = wxDateTime::Now();
-    auto timeStr = time.Format(L"%x %T");
-    graphics->DrawText(timeStr, 15, 40);
 
+
+
+    double leftPad = BorderLeft;
+
+    bool onSecond;
+
+    for (int tick = 0; tick <= tickNum; tick++)
+    {
+        onSecond = (int(tick) % timeline->GetFrameRate()) == 0;
+
+        if (onSecond)
+        {
+            // Convert the tick number to seconds in a string
+            graphics->StrokeLine(leftPad, TickTop, leftPad, TickTop+TickLong);
+            std::wstringstream str;
+            str << tick/timeline->GetFrameRate();
+            std::wstring wstr = str.str();
+
+            double w, h;
+            graphics->GetTextExtent(wstr, &w, &h);
+            graphics->DrawText(wstr, leftPad-(w/2), TickTop+TickLong);
+        }
+        else
+        {
+            graphics->StrokeLine(leftPad, TickTop, leftPad, TickTop+TickShort);
+        }
+        leftPad += TickSpacing;
+    }
 }
 
 /**
