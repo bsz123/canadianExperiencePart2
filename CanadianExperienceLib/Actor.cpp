@@ -104,6 +104,7 @@ void Actor::SetPicture(Picture *picture)
     {
         drawable->SetTimeline(mPicture->GetTimeline());
     }
+    mPicture->GetTimeline()->AddChannel(&mAnimChannel);
 }
 
 /**
@@ -115,6 +116,7 @@ void Actor::SetKeyframe()
     {
         drawable->SetKeyframe();
     }
+    mAnimChannel.SetKeyframe(mPosition);
 }
 
 /**
@@ -126,9 +128,15 @@ void Actor::GetKeyframe()
     {
         drawable->GetKeyframe();
     }
+    if(mAnimChannel.IsValid())
+    {
+        mPosition = mAnimChannel.GetPoint();
+    }
 }
 
-std::shared_ptr<AnimChannel> Actor::GetPositionChannel()
+AnimChannel* Actor::GetPositionChannel()
 {
-    return mAnimChannel;
+    return &mAnimChannel;
 }
+
+

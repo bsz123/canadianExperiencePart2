@@ -8,7 +8,7 @@
 #ifndef CANADIANEXPERIENCE_ACTOR_H
 #define CANADIANEXPERIENCE_ACTOR_H
 
-#include "AnimChannel.h"
+#include "AnimChannelPoint.h"
 
 class Drawable;
 class Picture;
@@ -44,7 +44,7 @@ private:
     Picture* mPicture = nullptr;
 
     /// The Channel this Actor is part of
-    std::shared_ptr<AnimChannel> mAnimChannel;
+    AnimChannelPoint mAnimChannel;
 
 public:
 
@@ -124,7 +124,7 @@ public:
 
     void GetKeyframe();
 
-    std::shared_ptr<AnimChannel> GetPositionChannel();
+    AnimChannel* GetPositionChannel();
 };
 
 #endif //CANADIANEXPERIENCE_ACTOR_H

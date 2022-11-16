@@ -26,7 +26,7 @@ protected:
     class KeyframeAngle : public Keyframe
     {
     private:
-        double mAngle;
+        double mAngle; /// Keyframe angle
 
         /// The channel this keyframe is associated with
         AnimChannelAngle *mChannel;
