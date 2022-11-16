@@ -105,3 +105,25 @@ void Actor::SetPicture(Picture *picture)
         drawable->SetTimeline(mPicture->GetTimeline());
     }
 }
+
+/**
+ * Set a keyframe on an actor.
+ */
+void Actor::SetKeyframe()
+{
+    for (auto drawable : mDrawablesInOrder)
+    {
+        drawable->SetKeyframe();
+    }
+}
+
+/**
+ * Get a keyframe for an actor.
+ */
+void Actor::GetKeyframe()
+{
+    for (auto drawable : mDrawablesInOrder)
+    {
+        drawable->GetKeyframe();
+    }
+}

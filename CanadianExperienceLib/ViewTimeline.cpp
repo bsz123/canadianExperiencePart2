@@ -13,6 +13,7 @@
 #include "ViewTimeline.h"
 #include "TimelineDlg.h"
 #include "Picture.h"
+#include "Actor.h"
 
 using namespace std;
 
@@ -224,7 +225,11 @@ void ViewTimeline::OnEditTimelineProperties(wxCommandEvent& event)
  */
 void ViewTimeline::OnSetKeyframe(wxCommandEvent& event)
 {
-    int x = 0;
+    auto picture = GetPicture();
+    for (auto actor : *picture)
+    {
+        actor->SetKeyframe();
+    }
 }
 
 /**

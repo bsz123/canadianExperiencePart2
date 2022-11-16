@@ -144,7 +144,9 @@ public:
      */
     AnimChannelAngle *GetAngleChannel() { return &mChannel; }
 
+    void SetKeyframe();
 
+    void GetKeyframe();
 };
 
 #endif //CANADIANEXPERIENCE_DRAWABLE_H

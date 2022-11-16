@@ -115,6 +115,9 @@ public:
      */
     Picture* GetPicture() { return mPicture; }
 
+    void SetKeyframe();
+
+    void GetKeyframe();
 };
 
 #endif //CANADIANEXPERIENCE_ACTOR_H

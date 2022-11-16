@@ -109,3 +109,20 @@ void Drawable::SetTimeline(Timeline *timeline)
 {
     timeline->AddChannel(&mChannel);
 }
+
+/**
+ * Set a keyframe based on the current position.
+ */
+void Drawable::SetKeyframe()
+{
+    mChannel.SetKeyframe(mRotation);
+}
+
+/**
+ * Get a keyframe update from the animation system.
+ */
+void Drawable::GetKeyframe()
+{
+    if (mChannel.IsValid())
+        mRotation = mChannel.GetAngle();
+}

@@ -83,6 +83,10 @@ public:
 
     double GetAngle() { return mAngle; }
 
+    void SetKeyframe(double d)
+    {
+
+    }
 };
 
 #endif //CANADIANEXPERIENCE_ANIMCHANNELANGLE_H
