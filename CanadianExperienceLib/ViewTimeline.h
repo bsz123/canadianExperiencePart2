@@ -26,6 +26,9 @@ private:
     /// Graphics bitmap to display
     wxGraphicsBitmap mPointerBitmap;
 
+    /// Flag to indicate we are moving the pointer
+    bool      mMovingPointer = false;
+
 public:
     static const int Height = 90;      ///< Height to make this window
 

@@ -30,6 +30,9 @@ Drawable::Drawable(const std::wstring &name) : mName(name)
 void Drawable::SetActor(Actor *actor)
 {
     mActor = actor;
+
+    // Set the channel name
+    mChannel.SetName(actor->GetName() + L":" + mName);
 }
 
 

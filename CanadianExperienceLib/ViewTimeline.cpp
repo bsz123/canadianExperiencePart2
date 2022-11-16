@@ -147,7 +147,18 @@ void ViewTimeline::OnPaint(wxPaintEvent& event)
  */
 void ViewTimeline::OnLeftDown(wxMouseEvent &event)
 {
-    GetPicture()->UpdateObservers();
+    auto click = CalcUnscrolledPosition(event.GetPosition());
+
+    int x = click.x;
+
+    // Get the timeline
+    Timeline *timeline = GetPicture()->GetTimeline();
+    int pointerX = (int)(timeline->GetCurrentTime() *
+            timeline->GetFrameRate() * TickSpacing + BorderLeft);
+
+    mMovingPointer = x >= pointerX - mPointerImage->GetWidth() / 2 &&
+            x <= pointerX + mPointerImage->GetWidth() / 2;
+
 }
 
 /**
@@ -165,7 +176,20 @@ void ViewTimeline::OnLeftUp(wxMouseEvent &event)
 */
 void ViewTimeline::OnMouseMove(wxMouseEvent &event)
 {
+    auto click = CalcUnscrolledPosition(event.GetPosition());
 
+    Timeline* timeline = GetPicture()->GetTimeline();
+
+    if(mMovingPointer)
+    {
+        if (event.LeftIsDown())
+        {
+            // time = (pointx-left)/(FrameRate*TickSpace)
+            double animateTime = (click.x - BorderLeft)/
+                    (double(timeline->GetFrameRate())*TickSpacing);
+            GetPicture()->SetAnimationTime(animateTime);
+        }
+    }
 }
 
 /**
@@ -174,6 +198,7 @@ void ViewTimeline::OnMouseMove(wxMouseEvent &event)
 void ViewTimeline::UpdateObserver()
 {
     Refresh();
+    Update();
 }
 
 /**

@@ -8,7 +8,10 @@
 #ifndef CANADIANEXPERIENCE_DRAWABLE_H
 #define CANADIANEXPERIENCE_DRAWABLE_H
 
+#include "AnimChannelAngle.h"
+
 class Actor;
+class AnimChannelAngle;
 
 /**
  * Abstract base class for drawable elements of our picture.
@@ -36,6 +39,9 @@ private:
 
     /// Drawables children
     std::vector<std::shared_ptr<Drawable>> mChildren;
+
+    /// The animation channel for animating the angle of this drawable
+    AnimChannelAngle mChannel;
 
 protected:
     Drawable(const std::wstring &name);

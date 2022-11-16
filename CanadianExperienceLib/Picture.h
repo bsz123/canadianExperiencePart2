@@ -120,6 +120,7 @@ public:
      */
     Timeline *GetTimeline() {return &mTimeline;}
 
+    void SetAnimationTime(double time);
 };
 
 #endif //CANADIANEXPERIENCE_PICTURE_H
