@@ -64,7 +64,10 @@ ViewTimeline::ViewTimeline(wxFrame* parent, std::wstring img) :
             &ViewTimeline::OnEditTimelineProperties, this,
             XRCID("EditTimelineProperties"));
     mPointerImage = make_unique<wxImage>(img + PointerImageFile, wxBITMAP_TYPE_ANY);
-
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &ViewTimeline::OnSetKeyframe,
+            this, XRCID("SetKeyframe"));
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &ViewTimeline::OnDeleteKey,
+            this, XRCID("DeleteKeyframe"));
 }
 
 
@@ -213,4 +216,22 @@ void ViewTimeline::OnEditTimelineProperties(wxCommandEvent& event)
         // The dialog box has changed the Timeline settings
         GetPicture()->UpdateObservers();
     }
+}
+
+/**
+ * Keyframe setter event handler
+ * @param event
+ */
+void ViewTimeline::OnSetKeyframe(wxCommandEvent& event)
+{
+    int x = 0;
+}
+
+/**
+ * Delete keyframe event handler
+ * @param event
+ */
+void ViewTimeline::OnDeleteKey(wxCommandEvent& event)
+{
+    int x = 0;
 }

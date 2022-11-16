@@ -37,6 +37,10 @@ public:
     void UpdateObserver() override;
 
     void OnEditTimelineProperties(wxCommandEvent& event);
+
+    void OnSetKeyframe(wxCommandEvent& event);
+
+    void OnDeleteKey(wxCommandEvent& event);
 };
 
 
