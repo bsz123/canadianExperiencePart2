@@ -23,8 +23,8 @@ private:
 
     std::wstring mName;
 
-    int keyframe1 = -1;
-    int keyframe2 = -1;
+    int mKeyframe1 = -1;
+    int mKeyframe2 = -1;
 
     /// The timeline object
     Timeline *mTimeline = nullptr;
@@ -56,11 +56,11 @@ protected:
 
         }
 
-        void UseAs1();
+        virtual void UseAs1() {}
 
-        void UseAs2();
+        virtual void UseAs2() {}
 
-        void UseOnly();
+        virtual void UseOnly() {}
 
         /// Default constructor (disabled)
         Keyframe() = delete;
@@ -71,16 +71,13 @@ protected:
         /// Assignment operator
         void operator=(const Keyframe &) = delete;
 
+        void SetFrame(int curr) { mFrame = curr; }
+
+        int GetFrame() { return mFrame; }
+
     };
 
-    /**
-     * Insert a keyframe to our AnimChannel
-     * @param keyframe
-     */
-    void InsertKeyframe(std::shared_ptr<Keyframe> keyframe)
-    {
-
-    }
+    void InsertKeyframe(std::shared_ptr<Keyframe> keyframe);
 
     virtual void Tween(double t);
 

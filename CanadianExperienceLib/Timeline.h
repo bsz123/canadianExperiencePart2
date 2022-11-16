@@ -71,14 +71,7 @@ public:
      */
     double GetCurrentTime() const {return mCurrentTime;}
 
-    /**
-     * Sets the current time
-     *
-     * Ensures all of the channels are
-     * valid for that point in time.
-     * @param t The new time to set
-     */
-    void SetCurrentTime(double currentTime) { mCurrentTime = currentTime; }
+    void SetCurrentTime(double currentTime);
 
     double GetDuration() const;
 

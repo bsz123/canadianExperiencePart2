@@ -100,5 +100,11 @@ Picture::ActorIter Picture::end()
 void Picture::SetAnimationTime(double time)
 {
     mTimeline.SetCurrentTime(time);
+
+    for (auto actor : mActors)
+    {
+        actor->GetKeyframe();
+    }
+
     UpdateObservers();
 }

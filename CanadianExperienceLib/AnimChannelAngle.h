@@ -22,8 +22,6 @@ private:
 
 protected:
 
-
-
     /// Class that represents a keyframe
     class KeyframeAngle : public Keyframe
     {
@@ -53,12 +51,18 @@ protected:
         /// Assignment operator
         void operator=(const KeyframeAngle &) = delete;
 
-        
-        void UseAs1();
 
-        void UseAs2();
+        /// Use this keyframe as keyframe 1
+        void UseAs1() override { mChannel->mKeyframe1 = this; }
 
-        void UseOnly();
+        /// Use this keyframe as keyfraem 2
+        void UseAs2() override { mChannel->mKeyframe2 = this; }
+
+        /// Use this keyframe as the angle
+        void UseOnly() override { mChannel->mAngle = mAngle; }
+
+        /// Angle Getter
+        double GetAngle() { return mAngle; }
 
     };
 
@@ -83,10 +87,10 @@ public:
 
     double GetAngle() { return mAngle; }
 
-    void SetKeyframe(double d)
-    {
+    void SetKeyframe(double d);
 
-    }
+
+
 };
 
 #endif //CANADIANEXPERIENCE_ANIMCHANNELANGLE_H
