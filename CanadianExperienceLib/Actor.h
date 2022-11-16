@@ -107,11 +107,7 @@ public:
      */
     void SetClickable(bool clickable) { mClickable = clickable; }
 
-    /**
-     * Set a pointer to Picture
-     * @param picture Picture we are setting
-     */
-    void SetPicture(Picture* picture) { mPicture = picture; }
+    void SetPicture(Picture* picture);
 
     /**
      * Get the pointer to Picture

@@ -11,7 +11,7 @@
 #include "AnimChannelAngle.h"
 
 class Actor;
-class AnimChannelAngle;
+class Timeline;
 
 /**
  * Abstract base class for drawable elements of our picture.
@@ -135,6 +135,15 @@ public:
      * @param parent parent drawable
      */
     void SetParent( Drawable * parent) { mParent = parent; }
+
+    virtual void SetTimeline(Timeline *timeline);
+
+    /**
+     * The angle animation channel
+     * @return Pointer to animation channel
+     */
+    AnimChannelAngle *GetAngleChannel() { return &mChannel; }
+
 
 };
 

@@ -7,7 +7,10 @@
 
 #include <pch.h>
 #include "gtest/gtest.h"
+#include "memory"
 #include <Actor.h>
+#include <PolyDrawable.h>
+#include <Picture.h>
 
 using namespace std;
 
@@ -51,4 +54,23 @@ TEST(ActorTest, DefaultPosition)
     actor.SetPosition(wxPoint(4,4)); // Test Setter
     ASSERT_EQ(wxPoint(4,4),actor.GetPosition()); // Test Getter after change
 
+}
+
+TEST(ActorTest, SetPicture)
+{
+    // Create a picture object
+    auto picture = std::make_shared<Picture>();
+
+    // Create an actor and add it to the picture
+    auto actor = std::make_shared<Actor>(L"Actor");
+
+    // Create a drawable for the actor
+    auto drawable = std::make_shared<PolyDrawable>(L"Drawable");
+    actor->SetRoot(drawable);
+    actor->AddDrawable(drawable);
+
+    picture->AddActor(actor);
+
+    auto channel = drawable->GetAngleChannel();
+    ASSERT_EQ(channel->GetTimeline(), picture->GetTimeline());
 }

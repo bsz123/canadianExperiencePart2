@@ -19,24 +19,41 @@ private:
 
     double mAngle = 0;
 
+
 protected:
 
 
 
     /// Class that represents a keyframe
-    class KeyframeAngle
+    class KeyframeAngle : public Keyframe
     {
     private:
-
-    protected:
         double mAngle;
 
+        /// The channel this keyframe is associated with
+        AnimChannelAngle *mChannel;
+
+    protected:
+
     public:
-        KeyframeAngle()
-        {
+        /**
+         * Constructor
+         * @param channel The channel we are for
+         * @param angle The angle for the keyframe
+         */
+        KeyframeAngle(AnimChannelAngle *channel, double angle) :
+                Keyframe(channel), mChannel(channel), mAngle(angle) {}
+                
+        /// Default constructor (disabled)
+        KeyframeAngle() = delete;
+        
+        /// Copy constructor (disabled)
+        KeyframeAngle(const KeyframeAngle &) = delete;
+        
+        /// Assignment operator
+        void operator=(const KeyframeAngle &) = delete;
 
-        }
-
+        
         void UseAs1();
 
         void UseAs2();
@@ -46,6 +63,13 @@ protected:
     };
 
     void Tween(double t);
+
+private:
+    /// The first angle keyframe
+    KeyframeAngle *mKeyframe1 = nullptr;
+
+    /// The second angle keyframe
+    KeyframeAngle *mKeyframe2 = nullptr;
 
 public:
     /// Default constructor

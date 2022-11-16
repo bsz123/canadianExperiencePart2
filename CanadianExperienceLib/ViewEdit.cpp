@@ -34,6 +34,7 @@ ViewEdit::ViewEdit(wxFrame* parent) : wxScrolledCanvas(parent, wxID_ANY)
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &ViewEdit::OnEditRotate, this, XRCID("EditRotate"));
     parent->Bind(wxEVT_UPDATE_UI, &ViewEdit::OnUpdateEditMove, this, XRCID("EditMove"));
     parent->Bind(wxEVT_UPDATE_UI, &ViewEdit::OnUpdateEditRotate, this, XRCID("EditRotate"));
+    //parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &ViewEdit::OnSetKeyframe, this, XRCID(""))
 }
 
 
@@ -62,7 +63,10 @@ void ViewEdit::OnPaint(wxPaintEvent& event)
 
 }
 
+void ViewEdit::OnSetKeyframe(wxMouseEvent &event)
+{
 
+}
 
 /**
  * Handle the left mouse button down event

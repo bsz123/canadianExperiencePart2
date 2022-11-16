@@ -85,4 +85,23 @@ void Actor::AddDrawable(std::shared_ptr<Drawable> drawable)
     drawable->SetActor(this);
 }
 
+/**
+ * Set the picture link for this actor.
+ *
+ * This is telling the actor what
+ * picture to use.
+ *
+ * Also tells all child drawables what the timeline is.
+ * @param picture The picture we are using.
+ */
+void Actor::SetPicture(Picture *picture)
+{
+    mPicture = picture;
 
+    // Set the timeline for all drawables. This links the channels to
+    // the timeline system.
+    for (auto drawable : mDrawablesInOrder)
+    {
+        drawable->SetTimeline(mPicture->GetTimeline());
+    }
+}

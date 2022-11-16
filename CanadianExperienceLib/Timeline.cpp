@@ -6,6 +6,8 @@
 #include "pch.h"
 #include "Timeline.h"
 
+#include "AnimChannel.h"
+
 
 /**
  * Constructor
@@ -32,4 +34,15 @@ double Timeline::GetDuration() const
 int Timeline::GetCurrentFrame() const
 {
     return int(mCurrentTime * mFrameRate);
+}
+
+/**
+ * Add a channel to timeline
+ *
+ * @param channel
+ */
+void Timeline::AddChannel(AnimChannel *channel)
+{
+    mChannels.push_back(channel);
+    channel->SetTimeline(this);
 }

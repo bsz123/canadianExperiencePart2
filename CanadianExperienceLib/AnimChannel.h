@@ -11,6 +11,8 @@
 #ifndef CANADIANEXPERIENCE_ANIMCHANNEL_H
 #define CANADIANEXPERIENCE_ANIMCHANNEL_H
 
+#include "Timeline.h"
+
 /**
  * This class provides basic functionality and a polymorphic
  * representation for animation channels.
@@ -24,6 +26,10 @@ private:
     int keyframe1 = -1;
     int keyframe2 = -1;
 
+    /// The timeline object
+    Timeline *mTimeline = nullptr;
+
+
 protected:
 
 
@@ -31,9 +37,17 @@ protected:
     class Keyframe
     {
     private:
+        /// The channel this keyframe is associated with
+        AnimChannel *mChannel;
 
     protected:
         int mFrame;
+
+        /**
+         * Constructor
+         * @param channel Channel we are associated with
+         */
+        Keyframe(AnimChannel *channel) : mChannel(channel) {}
 
     public:
 
@@ -48,6 +62,15 @@ protected:
 
         void UseOnly();
 
+        /// Default constructor (disabled)
+        Keyframe() = delete;
+
+        /// Copy constructor (disabled)
+        Keyframe(const Keyframe &) = delete;
+
+        /// Assignment operator
+        void operator=(const Keyframe &) = delete;
+
     };
 
     /**
@@ -60,6 +83,10 @@ protected:
     }
 
     virtual void Tween(double t);
+
+private:
+    /// The collection of keyframes for this channel
+    std::vector<std::shared_ptr<Keyframe>> mKeyframes;
 
 public:
 
@@ -81,6 +108,10 @@ public:
     bool IsValid();
 
     void SetFrame(int currFrame);
+
+    void SetTimeline(Timeline * timeline) { mTimeline = timeline; }
+
+    Timeline* GetTimeline() { return mTimeline; }
 
 
 };

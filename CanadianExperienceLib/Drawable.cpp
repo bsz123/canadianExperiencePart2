@@ -100,3 +100,12 @@ wxPoint Drawable::RotatePoint(wxPoint point, double angle)
     return wxPoint(int(cosA * point.x + sinA * point.y),
             int(-sinA * point.x + cosA * point.y));
 }
+
+/**
+ * Add the channels for this drawable to a timeline
+ * @param timeline The timeline class.
+ */
+void Drawable::SetTimeline(Timeline *timeline)
+{
+    timeline->AddChannel(&mChannel);
+}

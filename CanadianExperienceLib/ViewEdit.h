@@ -47,6 +47,8 @@ public:
     ViewEdit(wxFrame* parent);
 
     void UpdateObserver() override;
+
+    void OnSetKeyframe(wxMouseEvent& event);
 };
 
 #endif //CANADIANEXPERIENCE_VIEWEDIT_H

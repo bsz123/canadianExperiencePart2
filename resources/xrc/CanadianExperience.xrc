@@ -27,6 +27,15 @@
 					<checkable>1</checkable>
 				</object>
 				<object class="separator" />
+				<object class="wxMenuItem" name="SetKeyframe">
+					<label>_Set Keyframe</label>
+					<help></help>
+				</object>
+				<object class="wxMenuItem" name="DeleteKeyframe">
+					<label>_Delete Keyframe</label>
+					<help></help>
+				</object>
+				<object class="separator" />
 				<object class="wxMenuItem" name="EditTimelineProperties">
 					<label>_Timeline Properties...</label>
 					<help></help>
@@ -49,7 +58,7 @@
 			<bitmapsize>32,32</bitmapsize>
 			<margins></margins>
 			<packing>1</packing>
-			<separation>5</separation>
+			<separation>10</separation>
 			<object class="tool" name="EditMove">
 				<label>Move</label>
 				<tooltip></tooltip>
@@ -63,6 +72,19 @@
 				<longhelp></longhelp>
 				<bitmap>rotate32.png</bitmap>
 				<toggle>1</toggle>
+			</object>
+			<object class="separator" />
+			<object class="tool" name="SetKeyframe">
+				<label>Set Keyframe</label>
+				<tooltip></tooltip>
+				<longhelp></longhelp>
+				<bitmap>record32.png</bitmap>
+			</object>
+			<object class="tool" name="DeleteKeyframe">
+				<label>DeleteKeyframe</label>
+				<tooltip></tooltip>
+				<longhelp></longhelp>
+				<bitmap>delete32.png</bitmap>
 			</object>
 		</object>
 	</object>

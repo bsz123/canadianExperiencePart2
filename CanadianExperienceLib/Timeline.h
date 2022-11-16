@@ -12,6 +12,7 @@
 #ifndef CANADIANEXPERIENCE_TIMELINE_H
 #define CANADIANEXPERIENCE_TIMELINE_H
 
+class AnimChannel;
 
 /**
  * A timeline consists of animation channels for different parts of our
@@ -26,6 +27,9 @@ private:
     int mFrameRate = 30;
 
     double mCurrentTime = 0;
+
+    /// List of all animation channels
+    std::vector<AnimChannel *> mChannels;
 
 public:
 
@@ -79,6 +83,8 @@ public:
     double GetDuration() const;
 
     int GetCurrentFrame() const;
+
+    void AddChannel(AnimChannel *channel);
 
 };
 

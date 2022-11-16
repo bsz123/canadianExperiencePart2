@@ -6,6 +6,7 @@
 #include <pch.h>
 #include "gtest/gtest.h"
 #include <Timeline.h>
+#include <AnimChannelAngle.h>
 
 TEST(TimelineTest, NumFrameInit)
 {
@@ -57,4 +58,13 @@ TEST(TimelineTest, GetCurrentFrame)
     // Changed time
     timeline.SetCurrentTime(9.27);
     ASSERT_EQ(278, timeline.GetCurrentFrame());
+}
+
+TEST(TimelineTest, Add)
+{
+    Timeline timeline;
+    AnimChannelAngle channel;
+
+    timeline.AddChannel(&channel);
+    ASSERT_EQ(&timeline, channel.GetTimeline());
 }
