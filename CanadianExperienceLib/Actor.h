@@ -125,6 +125,8 @@ public:
     void GetKeyframe();
 
     AnimChannel* GetPositionChannel();
+
+    void SetTimeline(Timeline * timeline);
 };
 
 #endif //CANADIANEXPERIENCE_ACTOR_H

@@ -9,6 +9,7 @@
 #define CANADIANEXPERIENCE_DRAWABLE_H
 
 #include "AnimChannelAngle.h"
+#include "AnimChannelPoint.h"
 
 class Actor;
 class Timeline;
@@ -144,9 +145,9 @@ public:
      */
     AnimChannelAngle *GetAngleChannel() { return &mChannel; }
 
-    void SetKeyframe();
+    void SetKeyframe(); // If virtual crash
 
-    void GetKeyframe();
+    virtual void GetKeyframe();
 };
 
 #endif //CANADIANEXPERIENCE_DRAWABLE_H

@@ -9,7 +9,7 @@ void AnimChannelPoint::SetKeyframe(wxPoint point)
 {
     // Create a keyframe of the appropriate type
     // Telling it this channel and the point
-    auto keyframe = std::make_shared<KeyframePoint>(this, point);
+    std::shared_ptr<Keyframe> keyframe = std::make_shared<KeyframePoint>(this, point);
 
     // Insert it into the collection
     InsertKeyframe(keyframe);

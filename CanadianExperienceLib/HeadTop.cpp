@@ -213,5 +213,13 @@ void HeadTop::SetEyeX(float left, float right)
 
 void HeadTop::SetKeyframe()
 {
-    //mChannel.Set
+    ImageDrawable::SetKeyframe();
+    mChannelP.SetKeyframe(GetPosition());
+}
+
+void HeadTop::GetKeyframe()
+{
+    ImageDrawable::GetKeyframe();
+    if(mChannelP.IsValid())
+        SetPosition(mChannelP.GetPoint());
 }

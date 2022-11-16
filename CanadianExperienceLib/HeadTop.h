@@ -10,6 +10,7 @@
 
 #include "ImageDrawable.h"
 
+
 /**
  * Class that specializes the head top
  */
@@ -30,7 +31,8 @@ private:
     float mEyeLeft; ///< Left ellipse
     float mEyeRight; ///< Right ellipse
 
-    AnimChannel mChannel; ///< Animation channel
+    AnimChannelPoint mChannelP; ///< Animation channel point
+    AnimChannelAngle mChannelA; ///< Animation channel angle
 
 public:
     
@@ -81,7 +83,9 @@ public:
 
     void SetEyeX(float left, float right);
 
-    void SetKeyframe();
+    void SetKeyframe(); // if override crash
+
+    void GetKeyframe();
 };
 
 #endif //CANADIANEXPERIENCE_HEADTOP_H
