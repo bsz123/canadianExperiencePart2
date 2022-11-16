@@ -103,16 +103,18 @@ void ViewTimeline::OnPaint(wxPaintEvent& event)
     double leftPad = BorderLeft;
     bool onSecond;
 
+    int frameRate = timeline->GetFrameRate();
+
     for (int tick = 0; tick <= tickNum; tick++)
     {
-        onSecond = (int(tick) % timeline->GetFrameRate()) == 0;
+        onSecond = (int(tick) % frameRate) == 0;
 
         if (onSecond)
         {
             // Convert the tick number to seconds in a string
             graphics->StrokeLine(leftPad, TickTop, leftPad, TickTop+TickLong);
             std::wstringstream str;
-            str << tick/timeline->GetFrameRate();
+            str << tick/frameRate;
             std::wstring wstr = str.str();
 
             double w, h;
@@ -130,8 +132,9 @@ void ViewTimeline::OnPaint(wxPaintEvent& event)
         mPointerBitmap = graphics->CreateBitmapFromImage(*mPointerImage);
     }
 
+
     graphics->DrawBitmap(mPointerBitmap,
-            10, 10,
+            timeline->GetCurrentTime()*frameRate*TickSpacing+BorderLeft/2, 10,
             mPointerImage->GetWidth(),
             mPointerImage->GetHeight());
 
@@ -144,7 +147,7 @@ void ViewTimeline::OnPaint(wxPaintEvent& event)
  */
 void ViewTimeline::OnLeftDown(wxMouseEvent &event)
 {
-
+    GetPicture()->UpdateObservers();
 }
 
 /**
