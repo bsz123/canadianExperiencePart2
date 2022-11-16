@@ -6,10 +6,22 @@
 #include "pch.h"
 #include "AnimChannelAngle.h"
 
+/**
+ * Compute an angle that is an interpolation
+ * between two keyframes
+ *
+ * This function is called after Use1 and Use2,
+ * so we have pointers to valid keyframes of the
+ * type KeyframeAngle. This function computes the
+ * tweening.
+ *
+ * @param t A t value. t=0 means keyframe1, t=1 means keyframe2.
+ * Other values interpolate between.
+ */
 void AnimChannelAngle::Tween(double t)
 {
-    mAngle = mKeyframe1->GetAngle();
-    //AnimChannel::Tween(t);
+    mAngle = mKeyframe1->GetAngle() * (1 - t) +
+            mKeyframe2->GetAngle() * t;
 }
 
 /**

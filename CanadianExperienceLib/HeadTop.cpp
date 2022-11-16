@@ -210,3 +210,8 @@ void HeadTop::SetEyeX(float left, float right)
     mEyeLeft = left;
     mEyeRight = right;
 }
+
+void HeadTop::SetKeyframe()
+{
+    //mChannel.Set
+}

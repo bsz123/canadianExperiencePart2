@@ -127,3 +127,8 @@ void Actor::GetKeyframe()
         drawable->GetKeyframe();
     }
 }
+
+std::shared_ptr<AnimChannel> Actor::GetPositionChannel()
+{
+    return mAnimChannel;
+}

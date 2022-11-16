@@ -30,6 +30,8 @@ private:
     float mEyeLeft; ///< Left ellipse
     float mEyeRight; ///< Right ellipse
 
+    AnimChannel mChannel; ///< Animation channel
+
 public:
     
     HeadTop(const std::wstring& name, const std::wstring& filename);
@@ -78,6 +80,8 @@ public:
     void SetInterocularDistance(float dis);
 
     void SetEyeX(float left, float right);
+
+    void SetKeyframe();
 };
 
 #endif //CANADIANEXPERIENCE_HEADTOP_H
