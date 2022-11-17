@@ -86,6 +86,14 @@ public:
     void SetKeyframe(); // if override crash
 
     void GetKeyframe();
+
+    /**
+ * Add the channels for this drawable to a timeline
+ * @param timeline The timeline class.
+ */
+    void SetTimeline(Timeline *timeline);
+
+    void SetActor(Actor* actor);
 };
 
 #endif //CANADIANEXPERIENCE_HEADTOP_H

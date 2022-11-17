@@ -98,13 +98,14 @@ void Actor::SetPicture(Picture *picture)
 {
     mPicture = picture;
 
+    mPicture->GetTimeline()->AddChannel(&mAnimChannel);
     // Set the timeline for all drawables. This links the channels to
     // the timeline system.
     for (auto drawable : mDrawablesInOrder)
     {
         drawable->SetTimeline(mPicture->GetTimeline());
     }
-    mPicture->GetTimeline()->AddChannel(&mAnimChannel);
+
 }
 
 /**
@@ -112,11 +113,12 @@ void Actor::SetPicture(Picture *picture)
  */
 void Actor::SetKeyframe()
 {
+    mAnimChannel.SetKeyframe(mPosition);
     for (auto drawable : mDrawablesInOrder)
     {
         drawable->SetKeyframe();
     }
-    mAnimChannel.SetKeyframe(mPosition);
+
 }
 
 /**
@@ -124,14 +126,15 @@ void Actor::SetKeyframe()
  */
 void Actor::GetKeyframe()
 {
-    for (auto drawable : mDrawablesInOrder)
-    {
-        drawable->GetKeyframe();
-    }
     if(mAnimChannel.IsValid())
     {
         mPosition = mAnimChannel.GetPoint();
     }
+    for (auto drawable : mDrawablesInOrder)
+    {
+        drawable->GetKeyframe();
+    }
+
 }
 
 AnimChannel* Actor::GetPositionChannel()

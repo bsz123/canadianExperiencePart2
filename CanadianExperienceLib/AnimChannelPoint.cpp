@@ -3,13 +3,14 @@
  * @author Ben Zuke
  */
 
+#include "pch.h"
 #include "AnimChannelPoint.h"
 
 void AnimChannelPoint::SetKeyframe(wxPoint point)
 {
     // Create a keyframe of the appropriate type
     // Telling it this channel and the point
-    std::shared_ptr<Keyframe> keyframe = std::make_shared<KeyframePoint>(this, point);
+    std::shared_ptr<KeyframePoint> keyframe = std::make_shared<KeyframePoint>(this, point);
 
     // Insert it into the collection
     InsertKeyframe(keyframe);

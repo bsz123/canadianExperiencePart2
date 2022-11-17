@@ -116,6 +116,7 @@ void Drawable::SetTimeline(Timeline *timeline)
 void Drawable::SetKeyframe()
 {
     mChannel.SetKeyframe(mRotation);
+    //mChannel.SetKeyframe(mPosition);
 }
 
 /**

@@ -68,7 +68,7 @@ public:
     /// Assignment operator
     void operator=(const Drawable &) = delete;
 
-    void SetActor(Actor* actor);
+    virtual void SetActor(Actor* actor);
 
     /**
      * Draw this drawable

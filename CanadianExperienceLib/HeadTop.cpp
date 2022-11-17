@@ -5,6 +5,7 @@
 
 #include "HeadTop.h"
 #include "ImageDrawable.h"
+#include "Actor.h"
 
 
 
@@ -214,12 +215,33 @@ void HeadTop::SetEyeX(float left, float right)
 void HeadTop::SetKeyframe()
 {
     ImageDrawable::SetKeyframe();
+
     mChannelP.SetKeyframe(GetPosition());
 }
 
 void HeadTop::GetKeyframe()
 {
     ImageDrawable::GetKeyframe();
+
     if(mChannelP.IsValid())
         SetPosition(mChannelP.GetPoint());
+}
+
+void HeadTop::SetTimeline(Timeline* timeline)
+{
+
+    timeline->AddChannel(&mChannelP);
+
+}
+
+/**
+ * Name wasn't being set when called?
+ * @param actor
+ */
+void HeadTop::SetActor(Actor *actor)
+{
+    ImageDrawable::SetActor(actor);
+
+    //mChannelA.SetName(actor->GetName() + L":" + GetName() + L":position");
+    mChannelP.SetName(actor->GetName() + L":" + GetName() + L":position");
 }

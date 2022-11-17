@@ -35,9 +35,9 @@ void AnimChannelAngle::SetKeyframe(double angle)
 {
     // Create a keyframe of the appropriate type
     // Telling it this channel and the angle
-    auto keyframe = std::make_shared<KeyframeAngle>(this, angle);
+    std::shared_ptr<KeyframeAngle> keyframe = std::make_shared<KeyframeAngle>(this, angle);
 
     // Insert it into the collection
-    InsertKeyframe(keyframe);
+    //InsertKeyframe(keyframe);
 }
 
