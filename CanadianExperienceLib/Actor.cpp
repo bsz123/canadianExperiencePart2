@@ -137,6 +137,10 @@ void Actor::GetKeyframe()
 
 }
 
+/**
+ * Return the channel for ps
+ * @return pointer to the AnimChannel
+ */
 AnimChannel* Actor::GetPositionChannel()
 {
     return &mAnimChannel;

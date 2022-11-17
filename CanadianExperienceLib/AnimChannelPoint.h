@@ -1,5 +1,5 @@
 /**
- * @file AnimChannelMove.h
+ * @file AnimChannelPoint.h
  * @author Ben Zuke
  *
  *
@@ -7,6 +7,7 @@
 
 #ifndef CANADIANEXPERIENCE_ANIMCHANNELPOINT_H
 #define CANADIANEXPERIENCE_ANIMCHANNELPOINT_H
+
 
 #include "AnimChannel.h"
 
@@ -19,6 +20,9 @@ private:
     wxPoint mPoint = wxPoint(0,0); ///< Channel Point
 
 protected:
+    /**
+     * Class that represents a point in the keyframe
+     */
     class KeyframePoint : public Keyframe
     {
     private:
@@ -76,6 +80,10 @@ public:
     /// Assignment operator
     void operator=(const AnimChannelPoint &) = delete;
 
+    /**
+     * Point Getter
+     * @return wxPoint representing object coordinates
+     */
     wxPoint GetPoint() { return mPoint; }
 
     void SetKeyframe(wxPoint point);

@@ -6,6 +6,10 @@
 #include "pch.h"
 #include "AnimChannelPoint.h"
 
+/**
+ * Keyframe Setter
+ * @param point wxPoint our object is located
+ */
 void AnimChannelPoint::SetKeyframe(wxPoint point)
 {
     // Create a keyframe of the appropriate type

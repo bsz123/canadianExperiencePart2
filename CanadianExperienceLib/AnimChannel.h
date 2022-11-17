@@ -21,10 +21,10 @@ class AnimChannel
 {
 private:
 
-    std::wstring mName;
+    std::wstring mName; ///< Channel Name
 
-    int mKeyframe1 = -1;
-    int mKeyframe2 = -1;
+    int mKeyframe1 = -1; ///< Left Keyframe
+    int mKeyframe2 = -1; ///< Right Keyframe
 
     /// The timeline object
     Timeline *mTimeline = nullptr;
@@ -41,7 +41,7 @@ protected:
         AnimChannel *mChannel;
 
     protected:
-        int mFrame;
+        int mFrame; ///< Current keyframe indice
 
         /**
          * Constructor
@@ -56,10 +56,13 @@ protected:
 
         }
 
+        /// Pure virtual keyframe1
         virtual void UseAs1() = 0;
 
+        /// Pure virtual keyframe2
         virtual void UseAs2() = 0;
 
+        /// Pure virtual keyframe only
         virtual void UseOnly() = 0;
 
         /// Default constructor (disabled)
@@ -71,8 +74,16 @@ protected:
         /// Assignment operator
         void operator=(const Keyframe &) = delete;
 
+        /**
+         * Frame setter
+         * @param curr indice of current frame
+         */
         void SetFrame(int curr) { mFrame = curr; }
 
+        /**
+         * Frame Getter
+         * @return current frame
+         */
         int GetFrame() { return mFrame; }
 
     };
@@ -96,21 +107,35 @@ public:
     /// Assignment operator
     void operator=(const AnimChannel &) = delete;
 
-    /// Name Setter
+    /**
+     * Name Setter
+     * @param name name of our channel
+     */
     void SetName(std::wstring name) { mName = name; }
 
-    /// Name Getter
+    /**
+     * Name Getter
+     * @return string of our channel name
+     */
     std::wstring GetName() { return mName; }
 
     bool IsValid();
 
     void SetFrame(int currFrame);
 
+    /**
+     * Timeline Setter
+     * @param timeline pointer
+     */
     void SetTimeline(Timeline * timeline) { mTimeline = timeline; }
 
+    /**
+     * Timeline Getter
+     * @return timeline our channel is associated with
+     */
     Timeline* GetTimeline() { return mTimeline; }
 
-
+    void DeleteFrame();
 };
 
 #endif //CANADIANEXPERIENCE_ANIMCHANNEL_H

@@ -238,5 +238,10 @@ void ViewTimeline::OnSetKeyframe(wxCommandEvent& event)
  */
 void ViewTimeline::OnDeleteKey(wxCommandEvent& event)
 {
-    int x = 0;
+    auto picture = GetPicture();
+
+    // The timeline knows -> Remove from timeline
+    picture->GetTimeline()->DeleteKeyframe();
+    picture->SetAnimationTime(picture->GetTimeline()->GetCurrentTime());
+
 }

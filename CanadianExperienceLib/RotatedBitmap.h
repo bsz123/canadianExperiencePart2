@@ -8,6 +8,9 @@
 #ifndef CANADIANEXPERIENCE_ROTATEDBITMAP_H
 #define CANADIANEXPERIENCE_ROTATEDBITMAP_H
 
+/**
+ * Create a rotated bitmap for sparty eyes and other bitmap eyes
+ */
 class RotatedBitmap
 {
 protected:

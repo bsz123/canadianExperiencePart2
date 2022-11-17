@@ -159,4 +159,36 @@ void AnimChannel::SetFrame(int currFrame)
     }
 }
 
+/**
+ * Delete keyframe indices for the current time
+ */
+void AnimChannel::DeleteFrame()
+{
+    // If you are to the left of all keyframes, mKeyframe1=-1 and mKeyframe2=0.
+    if( mKeyframe1 < 0)
+    {
+        return;
+    }
+
+    // If you are to the right of all keyframes and
+    // there are n keyframes, then mKeyframe1 = n-1
+    // and mKeyframe2 = -1;
+
+    // We need to know frame1 and current frame aren't equivalent
+    if ( mKeyframes[mKeyframe1]->GetFrame() != GetTimeline()->GetCurrentFrame() )
+        return;
+
+    // Remove the Current frame
+    // if you are deleting keyframe 7, then the keyframe at 7 is deleted first.
+    mKeyframes.erase(mKeyframes.begin() + mKeyframe1);
+
+    // Then mKeyframe1 becomes 6 (Next to the left)
+    mKeyframe1 -= 1;
+
+    // Check if to the right of all keyframes
+    if ( mKeyframe2 > -1 )
+    {
+        mKeyframe2 -= 1;
+    }
+}
 

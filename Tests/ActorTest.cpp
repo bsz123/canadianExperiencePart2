@@ -7,7 +7,7 @@
 
 #include <pch.h>
 #include "gtest/gtest.h"
-#include "memory"
+#include <memory>
 #include <Actor.h>
 #include <PolyDrawable.h>
 #include <Picture.h>

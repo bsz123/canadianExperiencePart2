@@ -3,6 +3,7 @@
  * @author benja
  */
 
+#include "pch.h"
 #include "RotatedBitmap.h"
 
 /**

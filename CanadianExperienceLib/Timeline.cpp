@@ -37,6 +37,19 @@ int Timeline::GetCurrentFrame() const
 }
 
 /**
+ * Delete the current keyframe
+ * find any channel matching time
+ */
+void Timeline::DeleteKeyframe()
+{
+    for (auto channel : mChannels)
+    {
+        channel->DeleteFrame();
+    }
+
+}
+
+/**
  * Add a channel to timeline
  *
  * @param channel

@@ -3,6 +3,7 @@
  * @author Ben Zuke
  */
 
+#include "pch.h"
 #include "ImageDrawable.h"
 
 /**

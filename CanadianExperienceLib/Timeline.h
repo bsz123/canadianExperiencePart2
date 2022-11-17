@@ -79,6 +79,7 @@ public:
 
     void AddChannel(AnimChannel *channel);
 
+    void DeleteKeyframe();
 };
 
 #endif //CANADIANEXPERIENCE_TIMELINE_H
