@@ -189,9 +189,19 @@ void ViewTimeline::OnMouseMove(wxMouseEvent &event)
     {
         if (event.LeftIsDown())
         {
+
             // time = (pointx-left)/(FrameRate*TickSpace)
             double animateTime = (click.x - BorderLeft)/
                     (double(timeline->GetFrameRate())*TickSpacing);
+            if (animateTime < 0)
+            {
+                animateTime = 0;
+            }
+            else if (timeline->GetDuration() < animateTime)
+            {
+                animateTime = timeline->GetDuration();
+            }
+
             GetPicture()->SetAnimationTime(animateTime);
         }
     }
