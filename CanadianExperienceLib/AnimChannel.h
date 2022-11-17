@@ -56,11 +56,11 @@ protected:
 
         }
 
-        virtual void UseAs1() {}
+        virtual void UseAs1() = 0;
 
-        virtual void UseAs2() {}
+        virtual void UseAs2() = 0;
 
-        virtual void UseOnly() {}
+        virtual void UseOnly() = 0;
 
         /// Default constructor (disabled)
         Keyframe() = delete;

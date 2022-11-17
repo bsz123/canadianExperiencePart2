@@ -145,7 +145,7 @@ public:
      */
     AnimChannelAngle *GetAngleChannel() { return &mChannel; }
 
-    void SetKeyframe(); // If virtual crash
+    virtual void SetKeyframe(); // If virtual crash
 
     virtual void GetKeyframe();
 };

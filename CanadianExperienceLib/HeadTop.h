@@ -83,7 +83,7 @@ public:
 
     void SetEyeX(float left, float right);
 
-    void SetKeyframe(); // if override crash
+    void SetKeyframe() override; // if override crash
 
     void GetKeyframe();
 
@@ -91,9 +91,9 @@ public:
  * Add the channels for this drawable to a timeline
  * @param timeline The timeline class.
  */
-    void SetTimeline(Timeline *timeline);
+    void SetTimeline(Timeline *timeline) override;
 
-    void SetActor(Actor* actor);
+    void SetActor(Actor* actor) override;
 };
 
 #endif //CANADIANEXPERIENCE_HEADTOP_H

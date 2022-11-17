@@ -214,14 +214,15 @@ void HeadTop::SetEyeX(float left, float right)
 
 void HeadTop::SetKeyframe()
 {
-    ImageDrawable::SetKeyframe();
+    Drawable::SetKeyframe();
 
     mChannelP.SetKeyframe(GetPosition());
 }
 
 void HeadTop::GetKeyframe()
 {
-    ImageDrawable::GetKeyframe();
+    Drawable::GetKeyframe();
+
 
     if(mChannelP.IsValid())
         SetPosition(mChannelP.GetPoint());
@@ -229,7 +230,7 @@ void HeadTop::GetKeyframe()
 
 void HeadTop::SetTimeline(Timeline* timeline)
 {
-
+    Drawable::SetTimeline(timeline);
     timeline->AddChannel(&mChannelP);
 
 }
