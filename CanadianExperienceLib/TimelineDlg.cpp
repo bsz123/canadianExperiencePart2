@@ -9,7 +9,11 @@
 #include <wx/valnum.h>
 #include "TimelineDlg.h"
 
-
+/**
+ * Constructor for dialog
+ * @param parent
+ * @param timeline
+ */
 TimelineDlg::TimelineDlg(wxWindow* parent, Timeline* timeline)
     : mTimeline(timeline)
 {

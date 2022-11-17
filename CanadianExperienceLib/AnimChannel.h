@@ -51,6 +51,10 @@ protected:
 
     public:
 
+        /**
+         * Constructor
+         * @param channel Current channel
+         */
         Keyframe( AnimChannel channel )
         {
 

@@ -71,7 +71,7 @@ public:
 
     /**
      * Set the center of eyes
-     * @param center Point that is the middle of the image
+     * @param point Point that is the middle of the image
      */
      void SetEyesCenter(wxPoint point) { mEyesCenter = point; }
 
@@ -87,10 +87,6 @@ public:
 
     void GetKeyframe();
 
-    /**
- * Add the channels for this drawable to a timeline
- * @param timeline The timeline class.
- */
     void SetTimeline(Timeline *timeline) override;
 
     void SetActor(Actor* actor) override;

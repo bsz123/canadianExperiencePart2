@@ -23,10 +23,10 @@ class Timeline
 {
 private:
 
-    int mNumFrames = 300;
-    int mFrameRate = 30;
+    int mNumFrames = 300; ///< Total frames
+    int mFrameRate = 30; ///< Frames per second
 
-    double mCurrentTime = 0;
+    double mCurrentTime = 0; ///< Current time
 
     /// List of all animation channels
     std::vector<AnimChannel *> mChannels;

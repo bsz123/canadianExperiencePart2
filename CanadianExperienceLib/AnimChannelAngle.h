@@ -17,7 +17,7 @@ class AnimChannelAngle : public AnimChannel
 {
 private:
 
-    double mAngle = 0;
+    double mAngle = 0; ///< Current angle of channel
 
 
 protected:
@@ -26,7 +26,7 @@ protected:
     class KeyframeAngle : public Keyframe
     {
     private:
-        double mAngle; /// Keyframe angle
+        double mAngle; ///< Keyframe angle
 
         /// The channel this keyframe is associated with
         AnimChannelAngle *mChannel;
@@ -61,7 +61,10 @@ protected:
         /// Use this keyframe as the angle
         void UseOnly() override { mChannel->mAngle = mAngle; }
 
-        /// Angle Getter
+        /**
+         * Angle getter
+         * @return double representing angle
+         */
         double GetAngle() { return mAngle; }
 
     };
@@ -85,6 +88,10 @@ public:
     /// Assignment operator
     void operator=(const AnimChannelAngle &) = delete;
 
+    /**
+     * Angle Getter
+     * @return Angle of object in double
+     */
     double GetAngle() { return mAngle; }
 
     void SetKeyframe(double d);

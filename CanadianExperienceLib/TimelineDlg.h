@@ -17,12 +17,12 @@ class TimelineDlg final : public wxDialog
 {
 private:
 
-    Timeline* mTimeline;
+    Timeline* mTimeline; ///< Timeline pointer
 
     /// Number of frames in the animation
     int mNumberOfFrames;
 
-    int mFrameRate;
+    int mFrameRate; ///< Pointer of timeline framerate
 
 public:
 

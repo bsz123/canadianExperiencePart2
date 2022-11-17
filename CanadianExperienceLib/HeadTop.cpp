@@ -212,6 +212,9 @@ void HeadTop::SetEyeX(float left, float right)
     mEyeRight = right;
 }
 
+/**
+ * Keyframe setter, downcalls
+ */
 void HeadTop::SetKeyframe()
 {
     Drawable::SetKeyframe();
@@ -219,6 +222,9 @@ void HeadTop::SetKeyframe()
     mChannelP.SetKeyframe(GetPosition());
 }
 
+/**
+ * Keyframe getter
+ */
 void HeadTop::GetKeyframe()
 {
     Drawable::GetKeyframe();
@@ -228,6 +234,10 @@ void HeadTop::GetKeyframe()
         SetPosition(mChannelP.GetPoint());
 }
 
+/**
+ * Timeline setter
+ * @param timeline pointer
+ */
 void HeadTop::SetTimeline(Timeline* timeline)
 {
     Drawable::SetTimeline(timeline);

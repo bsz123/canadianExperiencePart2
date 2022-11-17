@@ -20,14 +20,17 @@ void AnimChannelPoint::SetKeyframe(wxPoint point)
     InsertKeyframe(keyframe);
 }
 
+/**
+ * Tween the animation, using math provided
+ * @param t
+ */
 void AnimChannelPoint::Tween(double t)
 {
     wxPoint a = mKeyframe1->GetPoint();
     wxPoint b = mKeyframe2->GetPoint();
-    //double t = 0.3;
 
     wxPoint c = wxPoint(int(a.x + t * (b.x - a.x)),
             int(a.y + t * (b.y - a.y)));
-    //mPoint = wxPoint(int(mKeyframe1->GetPoint().x + t *)
+
     mPoint = c;
 }

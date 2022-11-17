@@ -44,6 +44,7 @@ const std::wstring PointerImageFile = L"/pointer.png";
 /**
  * Constructor
  * @param parent The main wxFrame object
+ * @param img The image path
  */
 ViewTimeline::ViewTimeline(wxFrame* parent, std::wstring img) :
     wxScrolledCanvas(parent,

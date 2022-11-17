@@ -56,7 +56,7 @@ protected:
         /// Use this keyframe as the Point
         void UseOnly() override { mChannel->mPoint = mPoint; }
 
-        /// Point Getter
+        /// Point Getter @return keyframe point
         wxPoint GetPoint() { return mPoint; }
 
     };
